@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monthly Family Budget Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background:#f5f5f5; padding:20px; }
+    .expense-list { max-height: 200px; overflow-y: auto; }
+    .alert-budget { font-weight: 600; }
+    .badge-brand { font-size: 1rem; }
+    #summaryBox { font-size: 1.1rem; }
+    footer { font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+
+<div class="container">
+  <h2 class="text-center mb-4">👨‍👩‍👧‍👦 Monthly Family Budget Tracker</h2>
+
+  <!-- Branding Badge -->
+  <div class="mb-3 text-center">
+    <span class="badge bg-primary badge-brand">Track, Save & Grow Your Family Budget!</span>
+  </div>
+
+  <!-- Tip Alert -->
+  <div class="alert alert-warning w-50 mx-auto mb-3 text-center">
+    <strong>Tip:</strong> Track your expenses regularly for better savings!
+  </div>
+
+  <!-- Analytics Link -->
+  <div class="mb-4 text-center">
+    <a href="detailed-charts.html" class="btn btn-success btn-lg">
+      📈 View Detailed Analytics & Charts
+    </a>
+  </div>
+
+
+
+
+
+  
+
+  <!-- Summary Box -->
+  <div id="summaryBox" class="alert alert-info w-50 mx-auto mb-3" style="display:none;"></div>
+
+  <!-- Set Monthly Budget -->
+  <div class="mb-4">
+    <label for="monthSelect" class="form-label">Select Month:</label>
+    <select id="monthSelect" class="form-select w-50 mb-2">
+      <option value="" disabled selected>Choose Month</option>
+      <option value="2025-01">January 2025</option>
+      <option value="2025-02">February 2025</option>
+      <option value="2025-03">March 2025</option>
+      <option value="2025-04">April 2025</option>
+      <option value="2025-05">May 2025</option>
+      <option value="2025-06">June 2025</option>
+      <option value="2025-07">July 2025</option>
+      <option value="2025-08">August 2025</option>
+      <option value="2025-09">September 2025</option>
+      <option value="2025-10">October 2025</option>
+      <option value="2025-11">November 2025</option>
+      <option value="2025-12">December 2025</option>
+    </select>
+
+    <div class="input-group w-50 mb-2">
+      <input type="number" id="budgetInput" class="form-control" placeholder="Set Budget for Selected Month (₹)" min="0" />
+      <button id="setBudgetBtn" class="btn btn-primary">Set Budget</button>
+    </div>
+    <div id="budgetAlert" class="alert-budget"></div>
+  </div>
+
+  <!-- Add Expense -->
+  <form id="expenseForm" class="row g-3 mb-4 w-75">
+    <div class="col-md-3">
+      <select id="memberName" class="form-select" required>
+        <option value="" disabled selected>Select Family Member</option>
+        <option value="Dinesh">Dinesh</option>
+        <option value="Hrishikesh">Hrishikesh</option>
+        <option value="Yash">Yash</option>
+        <option value="Suraj">Suraj</option>
+        <option value="Vicky">Vicky</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="expenseCategory" class="form-select" required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Bills">Bills</option>
+        <option value="Education">Education</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Healthcare">Healthcare</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <input type="number" id="expenseAmount" class="form-control" placeholder="Amount (₹)" min="1" required />
+    </div>
+    <div class="col-md-2 d-grid">
+      <button type="submit" class="btn btn-success">Add Expense</button>
+    </div>
+  </form>
+
+  <!-- Expense List -->
+  <div class="w-75 mb-4">
+    <h5>All Expenses</h5>
+    <ul id="expenseList" class="list-group expense-list"></ul>
+    <div class="mt-2">
+      <button id="saveAllBtn" class="btn btn-success me-2">💾 Save All Expenses</button>
+      <button id="clearBtn" class="btn btn-danger">Clear All Expenses</button>
+    </div>
+  </div>
+
+
+
+
+<!-- Simple Budget Chatbot -->
+<div id="chatbotBox" class="card border-primary" style="position:fixed; right:20px; bottom:20px; width:280px; z-index:999; box-shadow:0 4px 12px rgba(0,0,0,0.1); border-radius:8px;">
+  <div class="card-body p-2">
+    <h6 class="card-title text-primary mb-2">🤖 Budget Chatbot</h6>
+    <div id="chatHistory" style="min-height:30px; font-size:0.9rem; margin-bottom:8px; max-height:100px; overflow-y:auto; background:#f8f9fa; padding:5px; border-radius:4px;"></div>
+    <div class="input-group input-group-sm">
+      <input type="text" id="chatInput" class="form-control" placeholder="Ask: budget, spent, remaining..." />
+      <button id="chatSendBtn" class="btn btn-primary btn-sm">Ask</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
