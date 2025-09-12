@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IRCTC Mini Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="booking-box">
+    <h2>IRCTC Booking</h2>
+
+    <!-- Step 1: Train Search -->
+    <form id="trainForm" class="step active">
+      <div class="row">
+        <input type="text" id="from" placeholder="From (e.g., NDLS)" required>
+        <input type="text" id="to" placeholder="To (e.g., BCT)" required>
+      </div>
+      <div class="row">
+        <input type="date" id="date" required>
+        <select id="quota" required>
+          <option value="">Quota</option>
+          <option>General</option>
+          <option>Tatkal</option>
+          <option>Ladies</option>
+          <option>Senior Citizen</option>
+        </select>
+      </div>
+      <button type="submit">Search Trains</button>
+    </form>
+
+    <!-- Step 2: Train List -->
+    <div id="trainList" class="step">
+      <h3>Select Train & Class</h3>
+      <div id="trainCards"></div>
+      <button id="backToSearch" class="secondary">← Back</button>
+    </div>
+
+    <!-- Step 3: Passenger Details -->
+    <form id="passengerForm" class="step">
+      <div id="passengers">
+        <div class="passenger">
+          <input type="text" placeholder="Passenger Name" required>
+          <input type="number" placeholder="Age" min="1" required>
+          <select required>
+            <option value="">Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <select required>
+            <option value="">Berth</option>
+            <option>Lower</option>
+            <option>Middle</option>
+            <option>Upper</option>
+            <option>Side Lower</option>
+            <option>Side Upper</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" id="addPassenger">+ Add Passenger</button>
+      <button type="submit">Review Journey</button>
+      <button type="button" id="backToTrains" class="secondary">← Back</button>
+    </form>
+
+    <!-- Step 4: Review Page -->
+    <div id="reviewPage" class="step">
+      <h3>Review Journey</h3>
+      <p><b>Train:</b> <span id="reviewTrain"></span></p>
+      <p><b>From:</b> <span id="reviewFrom"></span> → <b>To:</b> <span id="reviewTo"></span></p>
+      <p><b>Date:</b> <span id="reviewDate"></span></p>
+      <p><b>Quota:</b> <span id="reviewQuota"></span></p>
+      <p><b>Class:</b> <span id="reviewClass"></span></p>
+      <p><b>Fare:</b> ₹ <span id="reviewFare"></span></p>
+      <button id="proceedPayment">Proceed to Payment</button>
+      <button id="backToPassengers" class="secondary">← Back</button>
+    </div>
+
+    <!-- Step 5: Payment -->
+    <form id="paymentForm" class="step">
+      <input type="text" id="card" maxlength="15" placeholder="Card Number (15 digits)" required>
+      <input type="password" id="cvv" maxlength="3" placeholder="CVV (3 digits)" required>
+      <button type="submit">Pay & Book</button>
+      <button type="button" id="backToReview" class="secondary">← Back</button>
+    </form>
+
+    <!-- Step 6: Success -->
+    <div id="successPage" class="step">
+      <h3>🎉 Booking Successful!</h3>
+      <p>Your PNR: <strong id="pnr"></strong></p>
+      <p><b>Train:</b> <span id="ticketTrain"></span></p>
+      <p><b>Route:</b> <span id="ticketFrom"></span> → <span id="ticketTo"></span></p>
+      <p><b>Date:</b> <span id="ticketDate"></span></p>
+      <p><b>Quota:</b> <span id="ticketQuota"></span></p>
+      <p><b>Class:</b> <span id="ticketClass"></span></p>
+      <p><b>Fare:</b> ₹ <span id="ticketFare"></span></p>
+      <button id="newBooking">New Booking</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
