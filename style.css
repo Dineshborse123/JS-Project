@@ -1,146 +1,126 @@
-/* ===== Global Styles ===== */
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  font-family: 'Poppins', Arial, sans-serif;
-  background: linear-gradient(135deg, #1a73e8, #6a11cb);
+  background: #f4f4f9;
+  color: #333;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
-  margin: 0;
   padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* ===== Booking Container ===== */
-.booking-box {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  padding: 30px;
-  width: 420px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  animation: fadeIn 0.6s ease-in-out;
-  color: #fff;
+.container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* ===== Headings ===== */
-h2, h3 {
+h1 {
   text-align: center;
-  color: #fff;
   margin-bottom: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  color: #2c3e50;
 }
 
-/* ===== Form Layout ===== */
-.row {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 15px;
+.input-section label {
+  display: block;
+  margin: 15px 0;
+  font-weight: bold;
 }
 
-input, select, button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  outline: none;
+input[type="range"] {
+  width: 70%;
+  margin: 8px 0;
 }
 
-/* Inputs */
-input, select {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-input::placeholder { color: #eee; }
-select option { color: #000; }
-
-/* Input Focus */
-input:focus, select:focus {
-  background: rgba(255,255,255,0.3);
-  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+span {
+  font-weight: bold;
+  margin-left: 10px;
+  color: #2980b9;
 }
 
-/* ===== Buttons ===== */
-button {
-  background: linear-gradient(135deg, #ff6a00, #ee0979);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 12px;
-  border-radius: 10px;
-  padding: 12px;
-  transition: 0.3s;
-}
-button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-}
-
-button.secondary {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-button.secondary:hover {
-  background: rgba(255,255,255,0.35);
-}
-
-/* ===== Passenger Grid ===== */
-.passenger {
-  display: grid;
-  grid-template-columns: 1fr 70px 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-/* ===== Steps ===== */
-.step { 
-  display: none; 
-  animation: fadeIn 0.6s ease-in-out;
-}
-.step.active { display: block; }
-
-/* ===== Train Cards ===== */
-.train-card {
-  background: rgba(255,255,255,0.15);
+.result-box {
+  margin: 20px 0;
   padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  border: 1px solid rgba(255,255,255,0.3);
+  background: #ecf0f1;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
   transition: 0.3s;
 }
-.train-card:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  transform: translateY(-3px);
-}
 
-.class-buttons button {
-  margin: 6px 3px;
-  padding: 8px 10px;
-  font-size: 13px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-.class-buttons button:hover {
-  background: linear-gradient(135deg, #1a73e8, #6a11cb);
+button:hover {
+  transform: scale(1.05);
+  background: #3498db;
   color: #fff;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
-/* ===== Responsive ===== */
-@media(max-width: 500px) {
-  .booking-box {
-    width: 100%;
-    padding: 20px;
-  }
-  .passenger {
-    grid-template-columns: 1fr 1fr;
-  }
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #3498db;
+  color: white;
+}
+
+/* Toggle View */
+.toggle-view {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1e272e;
+  color: #f1f2f6;
+}
+
+body.dark .container {
+  background: #2f3640;
+  color: #f5f6fa;
+}
+
+body.dark .result-box {
+  background: #353b48;
+}
+
+body.dark th {
+  background: #718093;
 }
